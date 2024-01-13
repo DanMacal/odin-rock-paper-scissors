@@ -1,8 +1,7 @@
 // Computer
 const compChoices = ['rock', 'paper', 'scissors'];
-const randomlyChosenOption = getComputerChoice(compChoices);
 
-function getComputerChoice(compChoices) {
+function randomlyChosenOption(compChoices) {
     const randomIndex = Math.floor(Math.random() * compChoices.length);
 
     const randomCompChoice = compChoices[randomIndex];
@@ -10,25 +9,40 @@ function getComputerChoice(compChoices) {
     return randomCompChoice;
 }
 
+const getComputerChoice = randomlyChosenOption(compChoices);
+
 // User
-function getUserChoice() {
-    const userChoice = prompt('Enter your choice (rock, paper, or scissors): ');
 
-    userChoice = userChoice.toLowerCase();
+const userChoicePrompt = prompt(
+    'Enter your choice (rock, paper, or scissors): '
+);
+const validChoices = ['rock', 'paper', 'scissors'];
 
+const userChoices = userChoicePrompt;
+
+function lowerCaseUserChoice(userChoices) {
+    userChoices = userChoices.toLowerCase();
+
+    return userChoices;
+}
+
+const getUserChoice = lowerCaseUserChoice(userChoices);
+
+// Game Logic
+function playRound(playerSelection, computerSelection) {
     if (
-        userChoice === 'rock' ||
-        userChoice === 'paper' ||
-        userChoice === 'scissors'
+        (getUserChoice === 'rock' && getComputerChoice === 'scissors') ||
+        (getUserChoice === 'paper' && getComputerChoice === 'rock') ||
+        (getUserChoice === 'scissors' && getComputerChoice === 'paper')
     ) {
-        return userChoice;
+        return 'You win!';
+    } else if (getUserChoice === getComputerChoice) {
+        return "It's a tie!";
+    } else if (!validChoices.includes(getUserChoice)) {
+        return 'Invalid choice. Please choose from: rock, paper, or scissors.';
     } else {
-        alert('Invalid choice. Please enter rock, paper, or scissors.');
-        return getUserChoice();
+        return 'You lose!';
     }
 }
 
-// Game Logic
-function playRound(playerSelection, computerSelection) {}
-
-playRound('paper', getComputerChoice);
+playRound(getUserChoice, getComputerChoice);
