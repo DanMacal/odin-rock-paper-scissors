@@ -17,7 +17,7 @@ These instructions will help you run the game on your local machine.
 1. Clone or download the repository to your local machine.
    
     ```bash
-    git clone https://github.com/your-username/rock-paper-scissors-game.git
+    git clone https://github.com/DanMacal/rock-paper-scissors-game.git
     ```
 
 2. Open the project folder.
