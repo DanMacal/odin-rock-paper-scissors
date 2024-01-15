@@ -1,4 +1,4 @@
-# odin-rock-paper-scissors
+# odin-rock-paper-scissor
 
 # Rock, Paper, Scissors Game
 
